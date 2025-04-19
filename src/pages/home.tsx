@@ -535,27 +535,22 @@ Home.get("/", (c) => {
                     <div class="terminal-line text-yellow-300 mb-1 flex items-center" data-number="1">
                       <span class="text-yellow-300">GET</span>
                       <span class="text-blue-300 ml-2">/api/search</span>
-                      <span class="text-gray-400 ml-2">→ Search all content</span>
                     </div>
                     <div class="terminal-line text-yellow-300 mb-1 flex items-center" data-number="2">
                       <span class="text-yellow-300">GET</span>
                       <span class="text-blue-300 ml-2">/api/search/songs</span>
-                      <span class="text-gray-400 ml-2">→ Search songs only</span>
                     </div>
                     <div class="terminal-line text-yellow-300 mb-1 flex items-center" data-number="3">
                       <span class="text-yellow-300">GET</span>
                       <span class="text-blue-300 ml-2">/api/search/albums</span>
-                      <span class="text-gray-400 ml-2">→ Search albums</span>
                     </div>
                     <div class="terminal-line text-yellow-300 mb-1 flex items-center" data-number="4">
                       <span class="text-yellow-300">GET</span>
                       <span class="text-blue-300 ml-2">/api/search/artists</span>
-                      <span class="text-gray-400 ml-2">→ Search artists</span>
                     </div>
                     <div class="terminal-line text-yellow-300 flex items-center" data-number="5">
                       <span class="text-yellow-300">GET</span>
                       <span class="text-blue-300 ml-2">/api/search/playlists</span>
-                      <span class="text-gray-400 ml-2">→ Search playlists</span>
                     </div>
                   </div>
                   
@@ -564,17 +559,10 @@ Home.get("/", (c) => {
                     <div class="terminal-line text-yellow-300 mb-1 flex items-center" data-number="6">
                       <span class="text-yellow-300">GET</span>
                       <span class="text-blue-300 ml-2">/api/songs</span>
-                      <span class="text-gray-400 ml-2">→ Get trending songs</span>
                     </div>
                     <div class="terminal-line text-yellow-300 mb-1 flex items-center" data-number="7">
                       <span class="text-yellow-300">GET</span>
                       <span class="text-blue-300 ml-2">/api/songs/:id</span>
-                      <span class="text-gray-400 ml-2">→ Get song details</span>
-                    </div>
-                    <div class="terminal-line text-yellow-300 flex items-center" data-number="8">
-                      <span class="text-yellow-300">GET</span>
-                      <span class="text-blue-300 ml-2">/api/songs/:id/suggestions</span>
-                      <span class="text-gray-400 ml-2">→ Get similar songs</span>
                     </div>
                   </div>
                   
@@ -583,22 +571,18 @@ Home.get("/", (c) => {
                     <div class="terminal-line text-yellow-300 mb-1 flex items-center" data-number="9">
                       <span class="text-yellow-300">GET</span>
                       <span class="text-blue-300 ml-2">/api/artists</span>
-                      <span class="text-gray-400 ml-2">→ Get trending artists</span>
                     </div>
                     <div class="terminal-line text-yellow-300 mb-1 flex items-center" data-number="10">
                       <span class="text-yellow-300">GET</span>
                       <span class="text-blue-300 ml-2">/api/artists/:id</span>
-                      <span class="text-gray-400 ml-2">→ Get artist details</span>
                     </div>
                     <div class="terminal-line text-yellow-300 mb-1 flex items-center" data-number="11">
                       <span class="text-yellow-300">GET</span>
                       <span class="text-blue-300 ml-2">/api/artists/:id/songs</span>
-                      <span class="text-gray-400 ml-2">→ Get artist songs</span>
                     </div>
                     <div class="terminal-line text-yellow-300 flex items-center" data-number="12">
                       <span class="text-yellow-300">GET</span>
                       <span class="text-blue-300 ml-2">/api/artists/:id/albums</span>
-                      <span class="text-gray-400 ml-2">→ Get artist albums</span>
                     </div>
                   </div>
                   
@@ -607,12 +591,10 @@ Home.get("/", (c) => {
                     <div class="terminal-line text-yellow-300 mb-1 flex items-center" data-number="13">
                       <span class="text-yellow-300">GET</span>
                       <span class="text-blue-300 ml-2">/api/albums</span>
-                      <span class="text-gray-400 ml-2">→ Get trending albums</span>
                     </div>
                     <div class="terminal-line text-yellow-300 flex items-center" data-number="14">
                       <span class="text-yellow-300">GET</span>
                       <span class="text-blue-300 ml-2">/api/playlists</span>
-                      <span class="text-gray-400 ml-2">→ Get featured playlists</span>
                     </div>
                   </div>
                 </div>
