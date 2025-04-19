@@ -1,54 +1,95 @@
-# JioSaavn API
+<!-- README.md -->
 
-![GitHub License](https://img.shields.io/github/license/sumitkolhe/jiosaavn-api)
-![GitHub Release](https://img.shields.io/github/v/release/sumitkolhe/jiosaavn-api)
+<div align="center">
 
-An Unofficial API for downloading high-quality songs, albums, playlists, and more from [JioSaavn](https://jiosaavn.com).
+```
+╔══════════════════════════════════════════╗
+║                                          ║
+      🚀 J I O S A A V N   A P I 🚀       
+║                                          ║
+     ⚡ UNOFFICIAL. HIGH QUALITY. ⚡      
+║   Download Songs, Albums, Playlists      ║
+║       from JioSaavn — like a boss.       ║
+║                                          ║
+╚══════════════════════════════════════════╝
+```
 
-## 📚 Documentation
+![License](https://img.shields.io/github/license/KEX001/Jiosaavan?style=for-the-badge)
+![Release](https://img.shields.io/github/v/release/KEX001/Jiosaavan?style=for-the-badge)
+![Stars](https://img.shields.io/github/stars/KEX001/Jiosaavan?style=for-the-badge)
+![Forks](https://img.shields.io/github/forks/KEX001/Jiosaavan?style=for-the-badge)
 
-Check out the [API documentation](https://saavn.dev/docs) for detailed information on how to use the API.
+</div>
 
-## 📰 Changelog
+---
 
-For a detailed list of changes, see the [CHANGELOG](CHANGELOG.md).
+## 🧠 What’s This?
 
-## 🔌 Running Locally
+> The **JioSaavn API** gives you raw, unrestricted power to fetch and download high-quality music, albums, playlists, and more from [JioSaavn](https://jiosaavn.com).  
+> Think of it as your personal music extraction unit — wrapped in clean code.
 
-> [!NOTE]
-> You need `Bun(1.0.29+)` or `Node.js(v20+)`
+---
 
-1. Clone the repository:
+## ⚙️ Features
 
-   ```sh
-   git clone https://github.com/sumitkolhe/jiosaavn-api
-   cd jiosaavn-api
-   ```
+- 🎵 320kbps MP3 Downloads
+- 📀 Album / Playlist Support
+- 🚀 Blazing Fast with Bun or Node
+- 🛠️ Simple REST Interface
+- 🔥 Deploy Anywhere — Edge Ready
 
-2. Install the required dependencies:
+---
 
-   ```sh
-   bun install
-   ```
+## 🛠 Local Setup (Takes 60 Seconds)
 
-3. Launch the development server:
+> Prerequisites: **Bun v1.0.29+** _or_ **Node.js v20+**
 
-   ```sh
-   bun run dev
-   ```
+```bash
+# 1. Clone the repo
+git clone https://github.com/KEX001/Jiosaavan
+cd jiosaavn-api
 
-## ☁️ Deploying Your Own Instance
+# 2. Install dependencies
+bun install  # or use npm install
 
-JioSaavn API can be deployed to either Cloudflare Workers or Vercel. Below are the instructions for deploying to each platform.
+# 3. Start dev server
+bun run dev
+```
 
-### Cloudflare Workers
+Now hit [`localhost:3000`](http://localhost:3000) and flex your API.
 
-[![Deploy with Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/sumitkolhe/jiosaavn-api)
+---
 
-### Vercel
+## ☁️ Deploy Like a Legend
+
+### Vercel (Plug & Play)
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/sumitkolhe/jiosaavn-api)
 
-## 📜 License
+---
 
-This project is distributed under the [MIT License](https://opensource.org/licenses/MIT). For more information, see the [LICENSE](LICENSE) file included in this repository.
+## 🧾 Changelog
+
+Track every update in the [CHANGELOG.md](CHANGELOG.md)
+
+---
+
+## 🧑‍💻 Devs & Contributors
+
+This project thrives on community fire.  
+Open issues, PRs, and forks are always welcome. Let’s build a legendary tool together.
+
+---
+
+## 📄 License
+
+This project is released under the [MIT License](LICENSE).
+
+---
+
+<div align="center">
+  
+_💻 Made with cold caffeine & hotter beats_  
+🔥 **Star it if you use it. Fork it if you vibe.** 🔥
+
+</div>
