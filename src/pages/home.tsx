@@ -23,6 +23,37 @@ export const SubtleParticles = ({ number }: { number: number }) => {
   )
 }
 
+export const FallingStars = ({ count }: { count: number }) => {
+  return (
+    <>
+      {Array.from({ length: count }, (_, i) => {
+        const size = Math.random() * 3 + 1;
+        const duration = Math.random() * 15 + 10;
+        const delay = Math.random() * 15;
+        const left = Math.random() * 15;
+        const opacity = Math.random() * 0.7 + 0.3;
+        
+        return (
+          <div
+            key={i}
+            class="absolute rounded-full bg-white pointer-events-none"
+            style={{
+              width: `${size}px`,
+              height: `${size}px`,
+              left: `${left}%`,
+              top: '-10px',
+              opacity: 0,
+              animation: `fall ${duration}s linear ${delay}s infinite`,
+              filter: 'blur(0.5px)',
+              willChange: 'transform, opacity'
+            }}
+          />
+        );
+      })}
+    </>
+  );
+}
+
 Home.get('/', (c) => {
   const title = 'JioSaavn API'
   const description = 'Professional TypeScript wrapper for JioSaavn - Elegant access to music metadata'
@@ -61,17 +92,20 @@ Home.get('/', (c) => {
                       900: '#0c4a6e',
                     },
                     dark: {
-                      900: '#0a0a0f',
-                      800: '#121218',
-                      700: '#1a1a22',
-                      600: '#24242e',
-                      500: '#2e2e3a',
+                      900: '#000000',
+                      800: '#0a0a0a',
+                      700: '#141414',
+                      600: '#1e1e1e',
+                      500: '#282828',
                     },
                   },
                   animation: {
                     'fade-in': 'fadeIn 0.8s ease-out forwards',
                     'float': 'float 12s linear infinite',
                     'gradient': 'gradient 8s ease infinite',
+                    'fall': 'fall linear infinite',
+                    'pulse-slow': 'pulse 6s infinite',
+                    'twinkle': 'twinkle 3s infinite alternate',
                   },
                   keyframes: {
                     fadeIn: {
@@ -87,6 +121,26 @@ Home.get('/', (c) => {
                       '0%': { 'background-position': '0% 50%' },
                       '50%': { 'background-position': '100% 50%' },
                       '100%': { 'background-position': '0% 50%' },
+                    },
+                    fall: {
+                      '0%': { 
+                        transform: 'translateY(0) translateX(0)',
+                        opacity: 0 
+                      },
+                      '10%': { 
+                        opacity: 0.8 
+                      },
+                      '70%': { 
+                        opacity: 0.8 
+                      },
+                      '100%': { 
+                        transform: 'translateY(100vh) translateX(20px)',
+                        opacity: 0 
+                      },
+                    },
+                    twinkle: {
+                      '0%': { opacity: 0.2 },
+                      '100%': { opacity: 1 },
                     }
                   }
                 }
@@ -105,7 +159,7 @@ Home.get('/', (c) => {
               font-family: 'Plus Jakarta Sans', sans-serif;
             }
             body {
-              background-color: #0a0a0f;
+              background-color: #000000;
               color: #f8fafc;
             }
             .gradient-text {
@@ -120,7 +174,7 @@ Home.get('/', (c) => {
               animation: gradient 15s ease infinite;
             }
             .elegant-card {
-              background: rgba(10, 10, 15, 0.6);
+              background: rgba(0, 0, 0, 0.5);
               backdrop-filter: blur(12px);
               -webkit-backdrop-filter: blur(12px);
               border: 1px solid rgba(255, 255, 255, 0.05);
@@ -137,19 +191,53 @@ Home.get('/', (c) => {
               -webkit-backdrop-filter: blur(8px);
               border: 1px solid rgba(255, 255, 255, 0.05);
             }
+            .star {
+              position: absolute;
+              background: white;
+              border-radius: 50%;
+              filter: blur(0.5px);
+              animation: twinkle var(--duration) infinite alternate;
+              pointer-events: none;
+            }
+            .particle {
+              pointer-events: none;
+            }
           `
         }} />
       </head>
       <body class="min-h-screen relative overflow-x-hidden">
         <div class="absolute inset-0 overflow-hidden pointer-events-none">
           <SubtleParticles number={25} />
-          <div class="absolute inset-0 bg-gradient-to-b from-primary-600/5 via-dark-900/90 to-dark-900"></div>
+          <FallingStars count={10} />
+          
+          {Array.from({ length: 50 }, (_, i) => {
+            const size = Math.random() * 1.5 + 0.5;
+            const duration = Math.random() * 5 + 3;
+            return (
+              <div
+                key={`star-${i}`}
+                class="star"
+                style={{
+                  top: `${Math.random() * 100}%`,
+                  left: `${Math.random() * 100}%`,
+                  width: `${size}px`,
+                  height: `${size}px`,
+                  opacity: Math.random() * 0.5 + 0.1,
+                  animationDuration: `${duration}s`,
+                  animationDelay: `${Math.random() * 5}s`,
+                  '--duration': `${duration}s`
+                }}
+              />
+            );
+          })}
+          
+          <div class="absolute inset-0 bg-gradient-to-b from-primary-600/5 via-black/90 to-black"></div>
         </div>
 
         <main class="relative max-w-6xl mx-auto px-6 py-20 z-10">
           <div class="text-center mb-20 animate-fade-in">
             <div class="flex flex-col items-center">
-              <div class="w-24 h-24 gradient-bg rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-primary-600/10">
+              <div class="w-24 h-24 gradient-bg rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-primary-600/10 animate-pulse-slow">
                 <svg class="w-12 h-12 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                   <path fill="currentColor" d="M3.172 3.464C2 4.93 2 7.286 2 12c0 4.714 0 7.071 1.172 8.535C4.343 22 6.229 22 10 22h3.376A4.25 4.25 0 0 1 17 16.007V12.25a2.25 2.25 0 0 1 4.5 0a.75.75 0 0 0 .5.707V12c0-4.714 0-7.071-1.172-8.536C19.657 2 17.771 2 14 2h-4C6.229 2 4.343 2 3.172 3.464" opacity=".5" />
                   <path fill="currentColor" fill-rule="evenodd" d="M8.25 12a3.75 3.75 0 1 1 7.5 0a3.75 3.75 0 0 1-7.5 0m11-.5a.75.75 0 0 1 .75.75a2.25 2.25 0 0 0 2.25 2.25a.75.75 0 0 1 0 1.5a3.734 3.734 0 0 1-2.25-.75v5a2.75 2.75 0 1 1-1.5-2.45v-5.55a.75.75 0 0 1 .75-.75m-.75 8.75a1.25 1.25 0 1 0-2.5 0a1.25 1.25 0 0 0 2.5 0" clip-rule="evenodd" />
@@ -264,8 +352,8 @@ Home.get('/', (c) => {
 
           <div class="mt-16 glass-effect rounded-xl p-8 max-w-4xl mx-auto">
             <h2 class="text-3xl font-bold text-center mb-8 font-jakarta gradient-text">Getting Started</h2>
-            <div class="bg-dark-800 rounded-lg overflow-hidden">
-              <div class="flex items-center px-4 py-3 bg-dark-700 border-b border-dark-600">
+            <div class="bg-dark-700 rounded-lg overflow-hidden border border-gray-800">
+              <div class="flex items-center px-4 py-3 bg-dark-800 border-b border-gray-800">
                 <div class="flex space-x-2">
                   <div class="w-3 h-3 rounded-full bg-red-500"></div>
                   <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
@@ -289,7 +377,7 @@ Home.get('/', (c) => {
 
         <footer class="relative mt-32 pb-8 text-center text-gray-500 text-sm">
           <div class="max-w-6xl mx-auto px-6">
-            <div class="border-t border-dark-700 pt-8">
+            <div class="border-t border-gray-800 pt-8">
               <p>© {new Date().getFullYear()} JioSaavn API. Not affiliated with JioSaavn.</p>
               <p class="mt-2 text-xs text-gray-600">Built with TypeScript and ❤️</p>
             </div>
