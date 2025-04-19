@@ -525,7 +525,7 @@ Home.get("/", (c) => {
               </div>
               <div class="p-5 font-mono text-sm">
                 <div class="flex items-start mb-4">
-                  <span class="text-green-400 mr-2">></span>
+                  <span class="text-green-400 mr-2">»</span>
                   <span class="text-purple-400">URL</span>
                   <span class="text-blue-400 ml-2">https://jiosaavan-mu.vercel.app/</span>
                 </div>
