@@ -41,7 +41,7 @@ export const PulsingOrbs = () => {
 Home.get('/', (c) => {
   const title = 'JioSaavn API'
   const description =
-    'Bringing the magic of Indian music to developers worldwide. Our unofficial API opens doors to JioSaavn's vast collection, helping you build applications that resonate with millions of hearts.'
+    "Bringing the magic of Indian music to developers worldwide. Our unofficial API opens doors to JioSaavn's vast collection, helping you build applications that resonate with millions of hearts."
 
   return c.html(
     <html>
