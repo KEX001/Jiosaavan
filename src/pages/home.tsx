@@ -1,4 +1,4 @@
-import { Hono } from 'hono'
+import { Hono } from "hono"
 
 export const Home = new Hono()
 
@@ -15,7 +15,7 @@ export const SubtleParticles = ({ number }: { number: number }) => {
             width: `${Math.random() * 8 + 2}px`,
             height: `${Math.random() * 8 + 2}px`,
             animation: `float ${Math.random() * 10 + 5}s linear infinite both`,
-            animationDelay: `${Math.random() * 5}s`
+            animationDelay: `${Math.random() * 5}s`,
           }}
         />
       ))}
@@ -27,12 +27,12 @@ export const FallingStars = ({ count }: { count: number }) => {
   return (
     <>
       {Array.from({ length: count }, (_, i) => {
-        const size = Math.random() * 3 + 1;
-        const duration = Math.random() * 15 + 10;
-        const delay = Math.random() * 15;
-        const left = Math.random() * 15;
-        const opacity = Math.random() * 0.7 + 0.3;
-        
+        const size = Math.random() * 3 + 1
+        const duration = Math.random() * 15 + 10
+        const delay = Math.random() * 15
+        const top = Math.random() * 60 + 20 // Position stars at different heights
+        const opacity = Math.random() * 0.7 + 0.3
+
         return (
           <div
             key={i}
@@ -40,23 +40,23 @@ export const FallingStars = ({ count }: { count: number }) => {
             style={{
               width: `${size}px`,
               height: `${size}px`,
-              left: `${left}%`,
-              top: '-10px',
+              left: "-10px",
+              top: `${top}%`,
               opacity: 0,
-              animation: `fall ${duration}s linear ${delay}s infinite`,
-              filter: 'blur(0.5px)',
-              willChange: 'transform, opacity'
+              animation: `fallDiagonal ${duration}s linear ${delay}s infinite`,
+              filter: "blur(0.5px)",
+              willChange: "transform, opacity",
             }}
           />
-        );
+        )
       })}
     </>
-  );
+  )
 }
 
-Home.get('/', (c) => {
-  const title = 'JioSaavn API'
-  const description = 'Professional TypeScript wrapper for JioSaavn - Elegant access to music metadata'
+Home.get("/", (c) => {
+  const title = "JioSaavn API"
+  const description = "Professional TypeScript wrapper for JioSaavn - Elegant access to music metadata"
 
   return c.html(
     <html class="scroll-smooth">
@@ -67,10 +67,14 @@ Home.get('/', (c) => {
         <meta name="description" content={description} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+          rel="stylesheet"
+        />
         <script src="https://cdn.tailwindcss.com" />
-        <script dangerouslySetInnerHTML={{
-          __html: `
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
             tailwind.config = {
               darkMode: 'class',
               theme: {
@@ -138,6 +142,22 @@ Home.get('/', (c) => {
                         opacity: 0 
                       },
                     },
+                    fallDiagonal: {
+                      '0%': { 
+                        transform: 'translateY(0) translateX(0)',
+                        opacity: 0 
+                      },
+                      '10%': { 
+                        opacity: 0.8 
+                      },
+                      '70%': { 
+                        opacity: 0.8 
+                      },
+                      '100%': { 
+                        transform: 'translateY(50vh) translateX(100vw)',
+                        opacity: 0 
+                      },
+                    },
                     twinkle: {
                       '0%': { opacity: 0.2 },
                       '100%': { opacity: 1 },
@@ -146,10 +166,12 @@ Home.get('/', (c) => {
                 }
               }
             }
-          `
-        }} />
-        <style dangerouslySetInnerHTML={{
-          __html: `
+          `,
+          }}
+        />
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
             * {
               font-family: 'Inter', sans-serif;
               -webkit-font-smoothing: antialiased;
@@ -202,17 +224,18 @@ Home.get('/', (c) => {
             .particle {
               pointer-events: none;
             }
-          `
-        }} />
+          `,
+          }}
+        />
       </head>
       <body class="min-h-screen relative overflow-x-hidden">
         <div class="absolute inset-0 overflow-hidden pointer-events-none">
           <SubtleParticles number={25} />
           <FallingStars count={10} />
-          
+
           {Array.from({ length: 50 }, (_, i) => {
-            const size = Math.random() * 1.5 + 0.5;
-            const duration = Math.random() * 5 + 3;
+            const size = Math.random() * 1.5 + 0.5
+            const duration = Math.random() * 5 + 3
             return (
               <div
                 key={`star-${i}`}
@@ -225,12 +248,12 @@ Home.get('/', (c) => {
                   opacity: Math.random() * 0.5 + 0.1,
                   animationDuration: `${duration}s`,
                   animationDelay: `${Math.random() * 5}s`,
-                  '--duration': `${duration}s`
+                  "--duration": `${duration}s`,
                 }}
               />
-            );
+            )
           })}
-          
+
           <div class="absolute inset-0 bg-gradient-to-b from-primary-600/5 via-black/90 to-black"></div>
         </div>
 
@@ -239,16 +262,21 @@ Home.get('/', (c) => {
             <div class="flex flex-col items-center">
               <div class="w-24 h-24 gradient-bg rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-primary-600/10 animate-pulse-slow">
                 <svg class="w-12 h-12 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <path fill="currentColor" d="M3.172 3.464C2 4.93 2 7.286 2 12c0 4.714 0 7.071 1.172 8.535C4.343 22 6.229 22 10 22h3.376A4.25 4.25 0 0 1 17 16.007V12.25a2.25 2.25 0 0 1 4.5 0a.75.75 0 0 0 .5.707V12c0-4.714 0-7.071-1.172-8.536C19.657 2 17.771 2 14 2h-4C6.229 2 4.343 2 3.172 3.464" opacity=".5" />
-                  <path fill="currentColor" fill-rule="evenodd" d="M8.25 12a3.75 3.75 0 1 1 7.5 0a3.75 3.75 0 0 1-7.5 0m11-.5a.75.75 0 0 1 .75.75a2.25 2.25 0 0 0 2.25 2.25a.75.75 0 0 1 0 1.5a3.734 3.734 0 0 1-2.25-.75v5a2.75 2.75 0 1 1-1.5-2.45v-5.55a.75.75 0 0 1 .75-.75m-.75 8.75a1.25 1.25 0 1 0-2.5 0a1.25 1.25 0 0 0 2.5 0" clip-rule="evenodd" />
+                  <path
+                    fill="currentColor"
+                    d="M3.172 3.464C2 4.93 2 7.286 2 12c0 4.714 0 7.071 1.172 8.535C4.343 22 6.229 22 10 22h3.376A4.25 4.25 0 0 1 17 16.007V12.25a2.25 2.25 0 0 1 4.5 0a.75.75 0 0 0 .5.707V12c0-4.714 0-7.071-1.172-8.536C19.657 2 17.771 2 14 2h-4C6.229 2 4.343 2 3.172 3.464"
+                    opacity=".5"
+                  />
+                  <path
+                    fill="currentColor"
+                    fillRule="evenodd"
+                    d="M8.25 12a3.75 3.75 0 1 1 7.5 0a3.75 3.75 0 0 1-7.5 0m11-.5a.75.75 0 0 1 .75.75a2.25 2.25 0 0 0 2.25 2.25a.75.75 0 0 1 0 1.5a3.734 3.734 0 0 1-2.25-.75v5a2.75 2.75 0 1 1-1.5-2.45v-5.55a.75.75 0 0 1 .75-.75m-.75 8.75a1.25 1.25 0 1 0-2.5 0a1.25 1.25 0 0 0 2.5 0"
+                    clipRule="evenodd"
+                  />
                 </svg>
               </div>
-              <h1 class="text-5xl md:text-6xl font-bold gradient-text font-jakarta mb-4">
-                JioSaavn API
-              </h1>
-              <p class="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
-                {description}
-              </p>
+              <h1 class="text-5xl md:text-6xl font-bold gradient-text font-jakarta mb-4">JioSaavn API</h1>
+              <p class="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">{description}</p>
               <div class="flex gap-3 justify-center mt-8">
                 <span class="px-4 py-2 bg-primary-600/10 text-primary-400 text-sm font-medium rounded-full border border-primary-500/20">
                   TypeScript
@@ -263,7 +291,18 @@ Home.get('/', (c) => {
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="elegant-card rounded-xl p-8">
               <div class="w-12 h-12 bg-primary-600/10 rounded-lg flex items-center justify-center text-primary-400 mb-6">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  class="w-5 h-5"
+                >
                   <path d="M12 2v4"></path>
                   <path d="m16 4-2 2"></path>
                   <path d="M18 8h4"></path>
@@ -278,43 +317,96 @@ Home.get('/', (c) => {
               <h3 class="text-xl font-bold text-white mb-3 font-jakarta">Core Features</h3>
               <ul class="space-y-3 text-gray-300">
                 <li class="flex items-start gap-3">
-                  <svg class="w-4 h-4 mt-0.5 text-primary-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  <svg
+                    class="w-4 h-4 mt-0.5 text-primary-400 flex-shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                   <span>Complete music metadata</span>
                 </li>
                 <li class="flex items-start gap-3">
-                  <svg class="w-4 h-4 mt-0.5 text-primary-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  <svg
+                    class="w-4 h-4 mt-0.5 text-primary-400 flex-shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                   <span>TypeScript first design</span>
                 </li>
                 <li class="flex items-start gap-3">
-                  <svg class="w-4 h-4 mt-0.5 text-primary-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  <svg
+                    class="w-4 h-4 mt-0.5 text-primary-400 flex-shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                   <span>Lightning fast responses</span>
                 </li>
                 <li class="flex items-start gap-3">
-                  <svg class="w-4 h-4 mt-0.5 text-primary-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  <svg
+                    class="w-4 h-4 mt-0.5 text-primary-400 flex-shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                   <span>Comprehensive documentation</span>
                 </li>
               </ul>
             </div>
 
-            <a href="https://github.com/sumitkolhe/jiosaavn-api" target="_blank" class="elegant-card rounded-xl p-8 group hover:border-primary-500/30">
+            <a
+              href="https://github.com/sumitkolhe/jiosaavn-api"
+              target="_blank"
+              class="elegant-card rounded-xl p-8 group hover:border-primary-500/30"
+              rel="noreferrer"
+            >
               <div class="w-12 h-12 bg-indigo-600/10 rounded-lg flex items-center justify-center text-indigo-400 mb-6">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  class="w-5 h-5"
+                >
                   <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77a5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                 </svg>
               </div>
               <h3 class="text-xl font-bold text-white mb-3 font-jakarta">Open Source</h3>
-              <p class="text-gray-300 mb-6">Fully open-source project available on GitHub for collaboration and contributions.</p>
+              <p class="text-gray-300 mb-6">
+                Fully open-source project available on GitHub for collaboration and contributions.
+              </p>
               <div class="text-primary-400 font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
                 Explore the code
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  class="w-4 h-4"
+                >
                   <path d="M5 12h14"></path>
                   <path d="M12 5l7 7-7 7"></path>
                 </svg>
@@ -323,25 +415,76 @@ Home.get('/', (c) => {
 
             <div class="elegant-card rounded-xl p-8">
               <div class="w-12 h-12 bg-gradient-to-br from-primary-500 to-indigo-500 rounded-lg flex items-center justify-center text-white mb-6">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  class="w-5 h-5"
+                >
                   <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
                 </svg>
               </div>
               <h3 class="text-xl font-bold text-white mb-3 font-jakarta">Connect</h3>
               <p class="text-gray-300 mb-6">Have questions? Reach out through these channels:</p>
               <div class="flex gap-4">
-                <a href="https://github.com/sumitkolhe" target="_blank" class="text-gray-400 hover:text-primary-400 transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <a
+                  href="https://github.com/sumitkolhe"
+                  target="_blank"
+                  class="text-gray-400 hover:text-primary-400 transition-colors"
+                  rel="noreferrer"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
                     <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77a5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                   </svg>
                 </a>
-                <a href="https://twitter.com/thesumitkolhe" target="_blank" class="text-gray-400 hover:text-indigo-400 transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <a
+                  href="https://twitter.com/thesumitkolhe"
+                  target="_blank"
+                  class="text-gray-400 hover:text-indigo-400 transition-colors"
+                  rel="noreferrer"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
                     <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
                   </svg>
                 </a>
                 <a href="mailto:contact@example.com" class="text-gray-400 hover:text-primary-400 transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                     <path d="M22 6l-10 7L2 6"></path>
                   </svg>
@@ -365,11 +508,19 @@ Home.get('/', (c) => {
                 <div class="text-green-400">$ npm install jiosaavn-api</div>
                 <div class="text-gray-400 mt-2">// Import the library</div>
                 <div class="text-blue-400 mt-1">import</div>
-                <div class="text-white mt-1">{"{ JioSaavn }"} <span class="text-blue-400">from</span> <span class="text-yellow-400">'jiosaavn-api'</span>;</div>
+                <div class="text-white mt-1">
+                  {"{ JioSaavn }"} <span class="text-blue-400">from</span>{" "}
+                  <span class="text-yellow-400">'jiosaavn-api'</span>;
+                </div>
                 <div class="text-gray-400 mt-2">// Initialize client</div>
-                <div class="text-white mt-1">const client = <span class="text-blue-400">new</span> <span class="text-purple-400">JioSaavn</span>();</div>
+                <div class="text-white mt-1">
+                  const client = <span class="text-blue-400">new</span> <span class="text-purple-400">JioSaavn</span>();
+                </div>
                 <div class="text-gray-400 mt-2">// Fetch song details</div>
-                <div class="text-white mt-1">const song = <span class="text-blue-400">await</span> client.songs.getDetails(<span class="text-yellow-400">'song-id'</span>);</div>
+                <div class="text-white mt-1">
+                  const song = <span class="text-blue-400">await</span> client.songs.getDetails(
+                  <span class="text-yellow-400">'song-id'</span>);
+                </div>
               </div>
             </div>
           </div>
@@ -384,6 +535,6 @@ Home.get('/', (c) => {
           </div>
         </footer>
       </body>
-    </html>
+    </html>,
   )
 })
