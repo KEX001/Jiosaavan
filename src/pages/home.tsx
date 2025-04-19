@@ -30,7 +30,7 @@ export const FallingStars = ({ count }: { count: number }) => {
         const size = Math.random() * 3 + 1
         const duration = Math.random() * 15 + 10
         const delay = Math.random() * 15
-        const top = Math.random() * 60 + 20 // Position stars at different heights
+        const top = Math.random() * 60 + 20
         const opacity = Math.random() * 0.7 + 0.3
 
         return (
@@ -368,7 +368,7 @@ Home.get("/", (c) => {
             </div>
 
             <a
-              href="https://github.com/sumitkolhe/jiosaavn-api"
+              href="https://github.com/KEX001/Jiosaavan"
               target="_blank"
               class="elegant-card rounded-xl p-8 group hover:border-primary-500/30"
               rel="noreferrer"
@@ -434,7 +434,7 @@ Home.get("/", (c) => {
               <p class="text-gray-300 mb-6">Have questions? Reach out through these channels:</p>
               <div class="flex gap-4">
                 <a
-                  href="https://github.com/sumitkolhe"
+                  href="https://github.com/kex001"
                   target="_blank"
                   class="text-gray-400 hover:text-primary-400 transition-colors"
                   rel="noreferrer"
@@ -454,7 +454,7 @@ Home.get("/", (c) => {
                   </svg>
                 </a>
                 <a
-                  href="https://twitter.com/thesumitkolhe"
+                  href="https://twitter.com/kxunall"
                   target="_blank"
                   class="text-gray-400 hover:text-indigo-400 transition-colors"
                   rel="noreferrer"
@@ -473,7 +473,7 @@ Home.get("/", (c) => {
                     <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
                   </svg>
                 </a>
-                <a href="mailto:contact@example.com" class="text-gray-400 hover:text-primary-400 transition-colors">
+                <a href="https://t.me/your_username" target="_blank" class="text-gray-400 hover:text-primary-400 transition-colors">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -484,9 +484,10 @@ Home.get("/", (c) => {
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                  >
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                    <path d="M22 6l-10 7L2 6"></path>
+                    >
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    <path d="M14.05 2a9 9 0 0 1 8 7.94"></path>
+                    <path d="M14.05 6A5 5 0 0 1 18 10"></path>
                   </svg>
                 </a>
               </div>
@@ -505,22 +506,25 @@ Home.get("/", (c) => {
                 <div class="text-xs text-gray-400 ml-4">Terminal</div>
               </div>
               <div class="p-4 font-mono text-sm">
-                <div class="text-green-400">$ npm install jiosaavn-api</div>
-                <div class="text-gray-400 mt-2">// Import the library</div>
-                <div class="text-blue-400 mt-1">import</div>
-                <div class="text-white mt-1">
-                  {"{ JioSaavn }"} <span class="text-blue-400">from</span>{" "}
-                  <span class="text-yellow-400">'jiosaavn-api'</span>;
-                </div>
-                <div class="text-gray-400 mt-2">// Initialize client</div>
-                <div class="text-white mt-1">
-                  const client = <span class="text-blue-400">new</span> <span class="text-purple-400">JioSaavn</span>();
-                </div>
-                <div class="text-gray-400 mt-2">// Fetch song details</div>
-                <div class="text-white mt-1">
-                  const song = <span class="text-blue-400">await</span> client.songs.getDetails(
-                  <span class="text-yellow-400">'song-id'</span>);
-                </div>
+                <div class="text-green-400">OPERATIONS :</div>  
+                <div class="text-green-400">// Search Endpoints</div>                
+                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400"> /api/search</div>
+                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400"> /api/search/songs</div>
+                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400"> /api/search/albums</div>
+                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400"> /api/search/artists</div>
+                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400"> /api/search/playlists</div>
+                <div class="text-green-400">// Song Endpoints</div>                    
+                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400"> /api/songs</div>
+                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400"> /api/songs/:id</div> 
+                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400"> /api/songs/:id/suggestions</div>  
+                <div class="text-green-400">// Artist Endpoints</div>   
+                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400"> /api/artists</div>
+                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400"> /api/artists/:id</div>
+                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400"> /api/artists/:id/songs</div>
+                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400"> /api/artists/:id/albums</div>                  
+                <div class="text-green-400">// Album & Playlist Endpoints</div>
+                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400"> /api/albums</div> 
+                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400"> /api/playlists</div>                   
               </div>
             </div>
           </div>
