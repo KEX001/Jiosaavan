@@ -31,20 +31,19 @@ export const FallingStars = ({ count }: { count: number }) => {
         const duration = Math.random() * 15 + 10;
         const delay = Math.random() * 15;
         const left = Math.random() * 15;
-        const opacity = Math.random() * 0.7 + 0.3;
         
         return (
           <div
             key={i}
-            class="absolute rounded-full bg-white pointer-events-none"
+            class="falling-star absolute rounded-full bg-white pointer-events-none"
             style={{
               width: `${size}px`,
               height: `${size}px`,
               left: `${left}%`,
               top: '-10px',
               opacity: 0,
-              animation: `fall ${duration}s linear ${delay}s infinite`,
               filter: 'blur(0.5px)',
+              animation: `fall ${duration}s linear ${delay}s infinite`,
               willChange: 'transform, opacity'
             }}
           />
@@ -128,7 +127,8 @@ Home.get('/', (c) => {
                         opacity: 0 
                       },
                       '10%': { 
-                        opacity: 0.8 
+                        opacity: 0.8,
+                        transform: 'translateY(0) translateX(0)'
                       },
                       '70%': { 
                         opacity: 0.8 
@@ -199,6 +199,9 @@ Home.get('/', (c) => {
               animation: twinkle var(--duration) infinite alternate;
               pointer-events: none;
             }
+            .falling-star {
+              will-change: transform, opacity;
+            }
             .particle {
               pointer-events: none;
             }
@@ -235,6 +238,7 @@ Home.get('/', (c) => {
         </div>
 
         <main class="relative max-w-6xl mx-auto px-6 py-20 z-10">
+          {/* Rest of your content remains exactly the same */}
           <div class="text-center mb-20 animate-fade-in">
             <div class="flex flex-col items-center">
               <div class="w-24 h-24 gradient-bg rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-primary-600/10 animate-pulse-slow">
