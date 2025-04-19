@@ -47,8 +47,8 @@ export class App {
           version: '1.0.0',
           title: 'JioSaavn API',
           description: `# Introduction 
-        \nJioSaavn API, accessible at [saavn.dev](https://saavn.dev), is an unofficial API that allows users to download high-quality songs from [JioSaavn](https://jiosaavn.com). 
-        It offers a fast, reliable, and easy-to-use API for developers. \n`
+        \nThe JioSaavn API is an unofficial service that provides seamless access to high-quality music from JioSaavn.
+Designed for developers, it delivers fast and dependable endpoints to search, stream, and download music effortlessly.\n`
         },
         servers: [{ url: `${protocol}//${hostname}${port ? `:${port}` : ''}`, description: 'Current environment' }]
       }
@@ -64,12 +64,12 @@ export class App {
         darkMode: true,
         metaData: {
           applicationName: 'JioSaavn API',
-          author: 'Sumit Kolhe',
-          creator: 'Sumit Kolhe',
-          publisher: 'Sumit Kolhe',
+          author: 'Kunal',
+          creator: 'Kunal',
+          publisher: 'Kunal',
           robots: 'index, follow',
           description:
-            'JioSaavn API is an unofficial wrapper written in TypeScript for jiosaavn.com providing programmatic access to a vast library of songs, albums, artists, playlists, and more.'
+            'The JioSaavn API is an unofficial TypeScript wrapper for JioSaavn, offering programmatic access to a wide collection of songs, albums, artists, playlists, and more. It enables developers to easily integrate JioSaavn content into their applications.'
         },
         url: '/swagger'
       })
@@ -78,7 +78,7 @@ export class App {
 
   private initializeRouteFallback() {
     this.app.notFound((ctx) => {
-      return ctx.json({ success: false, message: 'route not found, check docs at https://saavn.dev/docs' }, 404)
+      return ctx.json({ success: false, message: 'route not found, check docs' }, 404)
     })
   }
 
