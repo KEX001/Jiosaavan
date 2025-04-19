@@ -488,7 +488,7 @@ Home.get("/", (c) => {
                     <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
                   </svg>
                 </a>
-                <a href="https://t.me/your_username" target="_blank" class="text-gray-400 hover:text-primary-400 transition-colors">
+                <a href="https://t.me/ll_KEX_ll" target="_blank" class="text-gray-400 hover:text-primary-400 transition-colors">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="20"
@@ -520,9 +520,9 @@ Home.get("/", (c) => {
                   <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
                   <div class="w-3 h-3 rounded-full bg-green-500"></div>
                 </div>
-                <div class="text-sm text-gray-400 font-mono">api.jiosaavn.com</div>
+                <div class="text-sm text-gray-400 font-mono">https://jiosaavan-mu.vercel.app/</div>
                 <div class="ml-auto flex items-center">
-                  <span class="text-xs text-gray-500 mr-2">HTTPS</span>
+                  <span class="text-xs text-gray-500 mr-2">:</span>
                   <div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
                 </div>
               </div>
@@ -531,9 +531,9 @@ Home.get("/", (c) => {
               <div class="p-5 font-mono text-sm">
                 {/* Terminal Prompt */}
                 <div class="flex items-start mb-4">
-                  <span class="text-green-400 mr-2">$</span>
-                  <span class="text-purple-400">curl</span>
-                  <span class="text-blue-400 ml-2">https://api.jiosaavn.com</span>
+                  <span class="text-green-400 mr-2">></span>
+                  <span class="text-purple-400">URL</span>
+                  <span class="text-blue-400 ml-2">https://jiosaavan-mu.vercel.app/</span>
                 </div>
                 
                 {/* API Documentation */}
