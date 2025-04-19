@@ -508,12 +508,9 @@ Home.get("/", (c) => {
               </div>
             </div>
           </div>
-
-          {/* Enhanced Terminal Section */}
           <div class="mt-16 glass-effect rounded-xl p-8 max-w-4xl mx-auto">
             <h2 class="text-3xl font-bold text-center mb-8 font-jakarta gradient-text">API Documentation</h2>
             <div class="bg-dark-800 rounded-xl overflow-hidden border border-gray-700 shadow-lg">
-              {/* Terminal Header */}
               <div class="flex items-center px-5 py-3 bg-dark-900 border-b border-gray-700">
                 <div class="flex space-x-2 mr-4">
                   <div class="w-3 h-3 rounded-full bg-red-500"></div>
@@ -526,17 +523,12 @@ Home.get("/", (c) => {
                   <div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
                 </div>
               </div>
-              
-              {/* Terminal Content */}
               <div class="p-5 font-mono text-sm">
-                {/* Terminal Prompt */}
                 <div class="flex items-start mb-4">
                   <span class="text-green-400 mr-2">></span>
                   <span class="text-purple-400">URL</span>
                   <span class="text-blue-400 ml-2">https://jiosaavan-mu.vercel.app/</span>
                 </div>
-                
-                {/* API Documentation */}
                 <div class="mb-6">
                   <div class="text-green-400 mb-2">// Search Operations</div>
                   <div class="ml-4 mb-3">
@@ -624,8 +616,7 @@ Home.get("/", (c) => {
                     </div>
                   </div>
                 </div>
-                
-                {/* Terminal Prompt with blinking cursor */}
+              
                 <div class="flex items-center">
                   <span class="text-green-400 mr-2">$</span>
                   <span class="text-gray-300">_</span>
@@ -639,8 +630,8 @@ Home.get("/", (c) => {
         <footer class="relative mt-32 pb-8 text-center text-gray-500 text-sm">
           <div class="max-w-6xl mx-auto px-6">
             <div class="border-t border-gray-800 pt-8">
-              <p>© {new Date().getFullYear()} JioSaavn API. Not affiliated with JioSaavn.</p>
-              <p class="mt-2 text-xs text-gray-600">Built with TypeScript and ❤️</p>
+              <p>© {new Date().getFullYear()} JioSaavn. Not affiliated with JioSaavn.</p>
+              <p class="mt-2 text-xs text-gray-600">By Kunal 🌙</p>
             </div>
           </div>
         </footer>
