@@ -110,6 +110,7 @@ Home.get("/", (c) => {
                     'fall': 'fall linear infinite',
                     'pulse-slow': 'pulse 6s infinite',
                     'twinkle': 'twinkle 3s infinite alternate',
+                    'terminal-pulse': 'terminalPulse 1.5s infinite',
                   },
                   keyframes: {
                     fadeIn: {
@@ -161,6 +162,10 @@ Home.get("/", (c) => {
                     twinkle: {
                       '0%': { opacity: 0.2 },
                       '100%': { opacity: 1 },
+                    },
+                    terminalPulse: {
+                      '0%, 100%': { opacity: 1 },
+                      '50%': { opacity: 0.3 },
                     }
                   }
                 }
@@ -223,6 +228,16 @@ Home.get("/", (c) => {
             }
             .particle {
               pointer-events: none;
+            }
+            .terminal-line {
+              position: relative;
+              padding-left: 1.5rem;
+            }
+            .terminal-line:before {
+              content: attr(data-number);
+              position: absolute;
+              left: 0;
+              color: #6b7280;
             }
           `,
           }}
@@ -494,37 +509,128 @@ Home.get("/", (c) => {
             </div>
           </div>
 
+          {/* Enhanced Terminal Section */}
           <div class="mt-16 glass-effect rounded-xl p-8 max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-8 font-jakarta gradient-text">Getting Started</h2>
-            <div class="bg-dark-700 rounded-lg overflow-hidden border border-gray-800">
-              <div class="flex items-center px-4 py-3 bg-dark-800 border-b border-gray-800">
-                <div class="flex space-x-2">
+            <h2 class="text-3xl font-bold text-center mb-8 font-jakarta gradient-text">API Documentation</h2>
+            <div class="bg-dark-800 rounded-xl overflow-hidden border border-gray-700 shadow-lg">
+              {/* Terminal Header */}
+              <div class="flex items-center px-5 py-3 bg-dark-900 border-b border-gray-700">
+                <div class="flex space-x-2 mr-4">
                   <div class="w-3 h-3 rounded-full bg-red-500"></div>
                   <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
                   <div class="w-3 h-3 rounded-full bg-green-500"></div>
                 </div>
-                <div class="text-xs text-gray-400 ml-4">Terminal</div>
+                <div class="text-sm text-gray-400 font-mono">api.jiosaavn.com</div>
+                <div class="ml-auto flex items-center">
+                  <span class="text-xs text-gray-500 mr-2">HTTPS</span>
+                  <div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
+                </div>
               </div>
-              <div class="p-4 font-mono text-sm">
-                <div class="text-green-400">OPERATIONS :</div>  
-                <div class="text-green-400">// Search Endpoints</div>                
-                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400">/api/search</span></div>
-                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400">/api/search/songs</span></div>
-                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400">/api/search/albums</span></div>
-                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400">/api/search/artists</span></div>
-                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400">/api/search/playlists</span></div>
-                <div class="text-green-400">// Song Endpoints</div>                    
-                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400">/api/songs</span></div>
-                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400">/api/songs/:id</span></div> 
-                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400">/api/songs/:id/suggestions</span></div>  
-                <div class="text-green-400">// Artist Endpoints</div>   
-                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400">/api/artists</span></div>
-                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400">/api/artists/:id</span></div>
-                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400">/api/artists/:id/songs</span></div>
-                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400">/api/artists/:id/albums</span></div>                  
-                <div class="text-green-400">// Album & Playlist Endpoints</div>
-                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400">/api/albums</span></div> 
-                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400">/api/playlists</span></div>                   
+              
+              {/* Terminal Content */}
+              <div class="p-5 font-mono text-sm">
+                {/* Terminal Prompt */}
+                <div class="flex items-start mb-4">
+                  <span class="text-green-400 mr-2">$</span>
+                  <span class="text-purple-400">curl</span>
+                  <span class="text-blue-400 ml-2">https://api.jiosaavn.com</span>
+                </div>
+                
+                {/* API Documentation */}
+                <div class="mb-6">
+                  <div class="text-green-400 mb-2">// Search Operations</div>
+                  <div class="ml-4 mb-3">
+                    <div class="terminal-line text-yellow-300 mb-1 flex items-center" data-number="1">
+                      <span class="text-yellow-300">GET</span>
+                      <span class="text-blue-300 ml-2">/api/search</span>
+                      <span class="text-gray-400 ml-2">→ Search all content</span>
+                    </div>
+                    <div class="terminal-line text-yellow-300 mb-1 flex items-center" data-number="2">
+                      <span class="text-yellow-300">GET</span>
+                      <span class="text-blue-300 ml-2">/api/search/songs</span>
+                      <span class="text-gray-400 ml-2">→ Search songs only</span>
+                    </div>
+                    <div class="terminal-line text-yellow-300 mb-1 flex items-center" data-number="3">
+                      <span class="text-yellow-300">GET</span>
+                      <span class="text-blue-300 ml-2">/api/search/albums</span>
+                      <span class="text-gray-400 ml-2">→ Search albums</span>
+                    </div>
+                    <div class="terminal-line text-yellow-300 mb-1 flex items-center" data-number="4">
+                      <span class="text-yellow-300">GET</span>
+                      <span class="text-blue-300 ml-2">/api/search/artists</span>
+                      <span class="text-gray-400 ml-2">→ Search artists</span>
+                    </div>
+                    <div class="terminal-line text-yellow-300 flex items-center" data-number="5">
+                      <span class="text-yellow-300">GET</span>
+                      <span class="text-blue-300 ml-2">/api/search/playlists</span>
+                      <span class="text-gray-400 ml-2">→ Search playlists</span>
+                    </div>
+                  </div>
+                  
+                  <div class="text-green-400 mb-2">// Song Operations</div>
+                  <div class="ml-4 mb-3">
+                    <div class="terminal-line text-yellow-300 mb-1 flex items-center" data-number="6">
+                      <span class="text-yellow-300">GET</span>
+                      <span class="text-blue-300 ml-2">/api/songs</span>
+                      <span class="text-gray-400 ml-2">→ Get trending songs</span>
+                    </div>
+                    <div class="terminal-line text-yellow-300 mb-1 flex items-center" data-number="7">
+                      <span class="text-yellow-300">GET</span>
+                      <span class="text-blue-300 ml-2">/api/songs/:id</span>
+                      <span class="text-gray-400 ml-2">→ Get song details</span>
+                    </div>
+                    <div class="terminal-line text-yellow-300 flex items-center" data-number="8">
+                      <span class="text-yellow-300">GET</span>
+                      <span class="text-blue-300 ml-2">/api/songs/:id/suggestions</span>
+                      <span class="text-gray-400 ml-2">→ Get similar songs</span>
+                    </div>
+                  </div>
+                  
+                  <div class="text-green-400 mb-2">// Artist Operations</div>
+                  <div class="ml-4 mb-3">
+                    <div class="terminal-line text-yellow-300 mb-1 flex items-center" data-number="9">
+                      <span class="text-yellow-300">GET</span>
+                      <span class="text-blue-300 ml-2">/api/artists</span>
+                      <span class="text-gray-400 ml-2">→ Get trending artists</span>
+                    </div>
+                    <div class="terminal-line text-yellow-300 mb-1 flex items-center" data-number="10">
+                      <span class="text-yellow-300">GET</span>
+                      <span class="text-blue-300 ml-2">/api/artists/:id</span>
+                      <span class="text-gray-400 ml-2">→ Get artist details</span>
+                    </div>
+                    <div class="terminal-line text-yellow-300 mb-1 flex items-center" data-number="11">
+                      <span class="text-yellow-300">GET</span>
+                      <span class="text-blue-300 ml-2">/api/artists/:id/songs</span>
+                      <span class="text-gray-400 ml-2">→ Get artist songs</span>
+                    </div>
+                    <div class="terminal-line text-yellow-300 flex items-center" data-number="12">
+                      <span class="text-yellow-300">GET</span>
+                      <span class="text-blue-300 ml-2">/api/artists/:id/albums</span>
+                      <span class="text-gray-400 ml-2">→ Get artist albums</span>
+                    </div>
+                  </div>
+                  
+                  <div class="text-green-400 mb-2">// Collection Operations</div>
+                  <div class="ml-4">
+                    <div class="terminal-line text-yellow-300 mb-1 flex items-center" data-number="13">
+                      <span class="text-yellow-300">GET</span>
+                      <span class="text-blue-300 ml-2">/api/albums</span>
+                      <span class="text-gray-400 ml-2">→ Get trending albums</span>
+                    </div>
+                    <div class="terminal-line text-yellow-300 flex items-center" data-number="14">
+                      <span class="text-yellow-300">GET</span>
+                      <span class="text-blue-300 ml-2">/api/playlists</span>
+                      <span class="text-gray-400 ml-2">→ Get featured playlists</span>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Terminal Prompt with blinking cursor */}
+                <div class="flex items-center">
+                  <span class="text-green-400 mr-2">$</span>
+                  <span class="text-gray-300">_</span>
+                  <span class="ml-1 h-5 w-2 bg-gray-400 animate-pulse"></span>
+                </div>
               </div>
             </div>
           </div>
