@@ -484,7 +484,7 @@ Home.get("/", (c) => {
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    >
+                  >
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                     <path d="M14.05 2a9 9 0 0 1 8 7.94"></path>
                     <path d="M14.05 6A5 5 0 0 1 18 10"></path>
@@ -508,23 +508,23 @@ Home.get("/", (c) => {
               <div class="p-4 font-mono text-sm">
                 <div class="text-green-400">OPERATIONS :</div>  
                 <div class="text-green-400">// Search Endpoints</div>                
-                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400"> /api/search</div>
-                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400"> /api/search/songs</div>
-                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400"> /api/search/albums</div>
-                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400"> /api/search/artists</div>
-                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400"> /api/search/playlists</div>
+                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400">/api/search</span></div>
+                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400">/api/search/songs</span></div>
+                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400">/api/search/albums</span></div>
+                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400">/api/search/artists</span></div>
+                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400">/api/search/playlists</span></div>
                 <div class="text-green-400">// Song Endpoints</div>                    
-                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400"> /api/songs</div>
-                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400"> /api/songs/:id</div> 
-                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400"> /api/songs/:id/suggestions</div>  
+                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400">/api/songs</span></div>
+                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400">/api/songs/:id</span></div> 
+                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400">/api/songs/:id/suggestions</span></div>  
                 <div class="text-green-400">// Artist Endpoints</div>   
-                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400"> /api/artists</div>
-                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400"> /api/artists/:id</div>
-                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400"> /api/artists/:id/songs</div>
-                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400"> /api/artists/:id/albums</div>                  
+                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400">/api/artists</span></div>
+                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400">/api/artists/:id</span></div>
+                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400">/api/artists/:id/songs</span></div>
+                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400">/api/artists/:id/albums</span></div>                  
                 <div class="text-green-400">// Album & Playlist Endpoints</div>
-                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400"> /api/albums</div> 
-                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400"> /api/playlists</div>                   
+                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400">/api/albums</span></div> 
+                <div class="text-yellow-400">{"{ GET }"} <span class="text-blue-400">/api/playlists</span></div>                   
               </div>
             </div>
           </div>
@@ -539,6 +539,6 @@ Home.get("/", (c) => {
           </div>
         </footer>
       </body>
-    </html>,
+    </html>
   )
 })
