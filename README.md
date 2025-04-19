@@ -64,7 +64,7 @@ Now hit [`localhost:3000`](http://localhost:3000) and flex your API.
 
 ### Vercel (Plug & Play)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/sumitkolhe/jiosaavn-api)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/KEX001/Jiosaavan)
 
 ---
 
