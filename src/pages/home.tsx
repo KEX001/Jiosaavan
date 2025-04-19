@@ -568,19 +568,19 @@ Home.get("/", (c) => {
                   
                   <div class="text-green-400 mb-2">// Artist Operations</div>
                   <div class="ml-4 mb-3">
-                    <div class="terminal-line text-yellow-300 mb-1 flex items-center" data-number="9">
+                    <div class="terminal-line text-yellow-300 mb-1 flex items-center" data-number="8">
                       <span class="text-yellow-300">GET</span>
                       <span class="text-blue-300 ml-2">/api/artists</span>
                     </div>
-                    <div class="terminal-line text-yellow-300 mb-1 flex items-center" data-number="10">
+                    <div class="terminal-line text-yellow-300 mb-1 flex items-center" data-number="9">
                       <span class="text-yellow-300">GET</span>
                       <span class="text-blue-300 ml-2">/api/artists/:id</span>
                     </div>
-                    <div class="terminal-line text-yellow-300 mb-1 flex items-center" data-number="11">
+                    <div class="terminal-line text-yellow-300 mb-1 flex items-center" data-number="10">
                       <span class="text-yellow-300">GET</span>
                       <span class="text-blue-300 ml-2">/api/artists/:id/songs</span>
                     </div>
-                    <div class="terminal-line text-yellow-300 flex items-center" data-number="12">
+                    <div class="terminal-line text-yellow-300 flex items-center" data-number="11">
                       <span class="text-yellow-300">GET</span>
                       <span class="text-blue-300 ml-2">/api/artists/:id/albums</span>
                     </div>
@@ -588,11 +588,11 @@ Home.get("/", (c) => {
                   
                   <div class="text-green-400 mb-2">// Collection Operations</div>
                   <div class="ml-4">
-                    <div class="terminal-line text-yellow-300 mb-1 flex items-center" data-number="13">
+                    <div class="terminal-line text-yellow-300 mb-1 flex items-center" data-number="12">
                       <span class="text-yellow-300">GET</span>
                       <span class="text-blue-300 ml-2">/api/albums</span>
                     </div>
-                    <div class="terminal-line text-yellow-300 flex items-center" data-number="14">
+                    <div class="terminal-line text-yellow-300 flex items-center" data-number="13">
                       <span class="text-yellow-300">GET</span>
                       <span class="text-blue-300 ml-2">/api/playlists</span>
                     </div>
