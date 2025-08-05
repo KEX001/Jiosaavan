@@ -5,18 +5,19 @@ export const Home = new Hono()
 export const FloatingOrbs = ({ count }: { count: number }) => {
   return (
     <>
-      {Array.from({ length: count || 20 }, (_, idx) => (
+      {Array.from({ length: count || 25 }, (_, idx) => (
         <div
           key={idx}
-          className="absolute rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20"
+          className="absolute rounded-full bg-gradient-to-r from-cyan-500/30 to-purple-500/30"
           style={{
             top: `${Math.random() * 100}%`,
             left: `${Math.random() * 100}%`,
-            width: `${Math.random() * 12 + 4}px`,
-            height: `${Math.random() * 12 + 4}px`,
-            animation: `orbit ${Math.random() * 15 + 8}s linear infinite`,
-            animationDelay: `${Math.random() * 6}s`,
-            filter: "blur(2px)",
+            width: `${Math.random() * 15 + 5}px`,
+            height: `${Math.random() * 15 + 5}px`,
+            animation: `float ${Math.random() * 12 + 6}s ease-in-out infinite`,
+            animationDelay: `${Math.random() * 5}s`,
+            filter: "blur(3px)",
+            boxShadow: "0 0 10px rgba(139, 92, 246, 0.3)",
           }}
         />
       ))}
@@ -28,23 +29,24 @@ export const ShootingStars = ({ count }: { count: number }) => {
   return (
     <>
       {Array.from({ length: count }, (_, i) => {
-        const size = Math.random() * 2 + 1
-        const duration = Math.random() * 10 + 8
-        const delay = Math.random() * 10
-        const top = Math.random() * 80
+        const size = Math.random() * 2.5 + 1
+        const duration = Math.random() * 8 + 5
+        const delay = Math.random() * 8
+        const top = Math.random() * 90
 
         return (
           <div
             key={i}
-            className="absolute rounded-full bg-white"
+            className="absolute rounded-full bg-gradient-to-r from-white to-cyan-300"
             style={{
               width: `${size}px`,
               height: `${size}px`,
-              left: "-5px",
+              left: "-10px",
               top: `${top}%`,
               opacity: 0,
               animation: `shoot ${duration}s linear ${delay}s infinite`,
-              filter: "blur(0.8px)",
+              filter: "blur(1px)",
+              boxShadow: "0 0 8px rgba(255, 255, 255, 0.5)",
             }}
           />
         )
@@ -67,7 +69,7 @@ Home.get("/", (c) => {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
           rel="stylesheet"
         />
         <script src="https://cdn.tailwindcss.com" />
@@ -79,59 +81,67 @@ Home.get("/", (c) => {
               theme: {
                 extend: {
                   fontFamily: {
-                    poppins: ['Poppins', 'sans-serif'],
-                    space: ['Space Grotesk', 'sans-serif'],
+                    inter: ['Inter', 'sans-serif'],
+                    space: ['Space Mono', 'monospace'],
                   },
                   colors: {
-                    accent: {
-                      50: '#f5f3ff',
-                      100: '#ede9fe',
-                      200: '#ddd6fe',
-                      300: '#c4b5fd',
-                      400: '#a78bfa',
-                      500: '#8b5cf6',
-                      600: '#7c3aed',
-                      700: '#6d28d9',
-                      800: '#5b21b6',
-                      900: '#4c1d95',
+                    dark: {
+                      900: '#0a0a0f',
+                      800: '#14141f',
+                      700: '#1e1e2d',
+                      600: '#2a2a3d',
                     },
-                    neutral: {
-                      900: '#111827',
-                      800: '#1f2937',
-                      700: '#374151',
-                      600: '#4b5563',
-                      500: '#6b7280',
+                    accent: {
+                      50: '#e5f3ff',
+                      100: '#b3daff',
+                      200: '#80c0ff',
+                      300: '#4da6ff',
+                      400: '#1a8cff',
+                      500: '#0077ff',
+                      600: '#005fcc',
+                      700: '#004799',
+                      800: '#003066',
+                      900: '#001933',
+                    },
+                    neon: {
+                      cyan: '#00f6ff',
+                      purple: '#d946ef',
                     },
                   },
                   animation: {
-                    'fade-up': 'fadeUp 0.6s ease-out forwards',
-                    'orbit': 'orbit 10s linear infinite',
-                    'shoot': 'shoot 12s linear infinite',
-                    'pulse-glow': 'pulseGlow 4s infinite',
-                    'blink': 'blink 2s infinite',
+                    'fade-in': 'fadeIn 1s ease-out forwards',
+                    'float': 'float 10s ease-in-out infinite',
+                    'shoot': 'shoot 8s linear infinite',
+                    'glow-pulse': 'glowPulse 3s ease-in-out infinite',
+                    'blink-cursor': 'blinkCursor 1s step-end infinite',
+                    'scale-in': 'scaleIn 0.5s ease-out forwards',
                   },
                   keyframes: {
-                    fadeUp: {
-                      '0%': { opacity: 0, transform: 'translateY(20px)' },
+                    fadeIn: {
+                      '0%': { opacity: 0, transform: 'translateY(30px)' },
                       '100%': { opacity: 1, transform: 'translateY(0)' },
                     },
-                    orbit: {
-                      '0%': { transform: 'translateY(0) translateX(0) rotate(0deg)' },
-                      '100%': { transform: 'translateY(-15px) translateX(15px) rotate(360deg)' },
+                    float: {
+                      '0%, 100%': { transform: 'translateY(0) translateX(0)' },
+                      '50%': { transform: 'translateY(-20px) translateX(20px)' },
                     },
                     shoot: {
                       '0%': { transform: 'translateY(0) translateX(0)', opacity: 0 },
                       '10%': { opacity: 1 },
-                      '70%': { opacity: 1 },
-                      '100%': { transform: 'translateY(80vh) translateX(90vw)', opacity: 0 },
+                      '60%': { opacity: 1 },
+                      '100%': { transform: 'translateY(100vh) translateX(100vw)', opacity: 0 },
                     },
-                    pulseGlow: {
-                      '0%, 100%': { boxShadow: '0 0 15px rgba(139, 92, 246, 0.2)' },
-                      '50%': { boxShadow: '0 0 25px rgba(139, 92, 246, 0.4)' },
+                    glowPulse: {
+                      '0%, 100%': { boxShadow: '0 0 10px rgba(0, 246, 255, 0.3)' },
+                      '50%': { boxShadow: '0 0 20px rgba(0, 246, 255, 0.5)' },
                     },
-                    blink: {
+                    blinkCursor: {
                       '0%, 100%': { opacity: 1 },
-                      '50%': { opacity: 0.4 },
+                      '50%': { opacity: 0 },
+                    },
+                    scaleIn: {
+                      '0%': { transform: 'scale(0.95)', opacity: 0 },
+                      '100%': { transform: 'scale(1)', opacity: 1 },
                     },
                   },
                 },
@@ -144,36 +154,37 @@ Home.get("/", (c) => {
           dangerouslySetInnerHTML={{
             __html: `
             * {
-              font-family: 'Poppins', sans-serif;
+              font-family: 'Inter', sans-serif;
               -webkit-font-smoothing: antialiased;
               -moz-osx-font-smoothing: grayscale;
             }
             .font-space {
-              font-family: 'Space Grotesk', sans-serif;
+              font-family: 'Space Mono', monospace;
             }
             body {
-              background: linear-gradient(180deg, #111827 0%, #1e3a8a 100%);
-              color: #f9fafb;
+              background: #0a0a0f;
+              color: #e5e7eb;
             }
-            .gradient-accent {
-              background: linear-gradient(90deg, #8b5cf6 0%, #ec4899 100%);
+            .gradient-neon {
+              background: linear-gradient(90deg, #00f6ff, #d946ef);
               -webkit-background-clip: text;
               background-clip: text;
               color: transparent;
             }
-            .card-glow {
-              background: rgba(17, 24, 39, 0.7);
-              border: 1px solid rgba(139, 92, 246, 0.2);
-              transition: all 0.4s ease;
+            .card-neon {
+              background: rgba(20, 20, 31, 0.85);
+              border: 1px solid rgba(0, 246, 255, 0.2);
+              transition: all 0.3s ease;
             }
-            .card-glow:hover {
-              transform: translateY(-8px);
-              border-color: rgba(139, 92, 246, 0.4);
-              box-shadow: 0 8px 20px rgba(139, 92, 246, 0.15);
+            .card-neon:hover {
+              transform: translateY(-5px);
+              border-color: rgba(0, 246, 255, 0.4);
+              box-shadow: 0 6px 15px rgba(0, 246, 255, 0.2);
             }
-            .terminal-glow {
-              background: rgba(17, 24, 39, 0.9);
-              border: 1px solid rgba(139, 92, 246, 0.3);
+            .terminal-neon {
+              background: rgba(10, 10, 15, 0.95);
+              border: 1px solid rgba(0, 246, 255, 0.3);
+              box-shadow: 0 0 15px rgba(0, 246, 255, 0.1);
             }
           `,
           }}
@@ -181,16 +192,16 @@ Home.get("/", (c) => {
       </head>
       <body className="min-h-screen relative overflow-x-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <FloatingOrbs count={30} />
-          <ShootingStars count={15} />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-neutral-900/80"></div>
+          <FloatingOrbs count={40} />
+          <ShootingStars count={20} />
+          <div className="absolute inset-0 bg-gradient-to-b from-dark-900/10 to-dark-900/80"></div>
         </div>
 
-        <main className="relative max-w-7xl mx-auto px-4 py-16 z-10">
-          <div className="text-center mb-24 animate-fade-up">
+        <main className="relative max-w-6xl mx-auto px-6 py-20 z-10">
+          <div className="text-center mb-20 animate-fade-in">
             <div className="flex flex-col items-center">
-              <div className="w-20 h-20 bg-gradient-to-br from-accent-500 to-pink-500 rounded-xl flex items-center justify-center mb-6 animate-pulse-glow">
-                <svg className="w-10 h-10 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <div className="w-16 h-16 bg-gradient-to-br from-neon-cyan to-neon-purple rounded-full flex items-center justify-center mb-6 animate-glow-pulse">
+                <svg className="w-8 h-8 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                   <path
                     fill="currentColor"
                     d="M3 4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H3zm9 14a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"
@@ -202,26 +213,26 @@ Home.get("/", (c) => {
                   />
                 </svg>
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold gradient-accent font-space mb-4">{title}</h1>
-              <p className="text-lg text-neutral-300 max-w-3xl mx-auto">{description}</p>
-              <div className="flex gap-4 justify-center mt-6">
-                <span className="px-3 py-1 bg-accent-500/10 text-accent-400 text-sm font-medium rounded-full border border-accent-500/20">
+              <h1 className="text-5xl md:text-6xl font-bold gradient-neon font-space mb-4">{title}</h1>
+              <p className="text-lg text-gray-300 max-w-2xl mx-auto">{description}</p>
+              <div className="flex gap-4 justify-center mt-8">
+                <span className="px-4 py-1.5 bg-neon-cyan/10 text-neon-cyan text-sm font-medium rounded-full border border-neon-cyan/30 animate-scale-in">
                   TypeScript
                 </span>
-                <span className="px-3 py-1 bg-pink-500/10 text-pink-400 text-sm font-medium rounded-full border border-pink-500/20">
+                <span className="px-4 py-1.5 bg-neon-purple/10 text-neon-purple text-sm font-medium rounded-full border border-neon-purple/30 animate-scale-in" style={{ animationDelay: '0.2s' }}>
                   Unofficial
                 </span>
               </div>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="card-glow rounded-2xl p-6">
-              <div className="w-10 h-10 bg-accent-500/10 rounded-lg flex items-center justify-center text-accent-400 mb-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="card-neon rounded-xl p-6 animate-scale-in">
+              <div className="w-12 h-12 bg-neon-cyan/10 rounded-lg flex items-center justify-center text-neon-cyan mb-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
+                  width="28"
+                  height="28"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -236,11 +247,11 @@ Home.get("/", (c) => {
                   <circle cx="12" cy="12" r="3"></circle>
                 </svg>
               </div>
-              <h3 className="text-lg font-bold text-white mb-3 font-space">Core Features</h3>
-              <ul className="space-y-2 text-neutral-300 text-sm">
+              <h3 className="text-xl font-bold text-white mb-3 font-space">Core Features</h3>
+              <ul className="space-y-3 text-gray-300 text-sm">
                 <li className="flex items-start gap-2">
                   <svg
-                    className="w-4 h-4 mt-0.5 text-accent-400"
+                    className="w-5 h-5 mt-0.5 text-neon-cyan"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -252,7 +263,7 @@ Home.get("/", (c) => {
                 </li>
                 <li className="flex items-start gap-2">
                   <svg
-                    className="w-4 h-4 mt-0.5 text-accent-400"
+                    className="w-5 h-5 mt-0.5 text-neon-cyan"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -264,7 +275,7 @@ Home.get("/", (c) => {
                 </li>
                 <li className="flex items-start gap-2">
                   <svg
-                    className="w-4 h-4 mt-0.5 text-accent-400"
+                    className="w-5 h-5 mt-0.5 text-neon-cyan"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -276,7 +287,7 @@ Home.get("/", (c) => {
                 </li>
                 <li className="flex items-start gap-2">
                   <svg
-                    className="w-4 h-4 mt-0.5 text-accent-400"
+                    className="w-5 h-5 mt-0.5 text-neon-cyan"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -292,14 +303,15 @@ Home.get("/", (c) => {
             <a
               href="https://github.com/KEX001/Jiosaavan"
               target="_blank"
-              className="card-glow rounded-2xl p-6 group"
+              className="card-neon rounded-xl p-6 group animate-scale-in"
               rel="noreferrer"
+              style={{ animationDelay: '0.1s' }}
             >
-              <div className="w-10 h-10 bg-pink-500/10 rounded-lg flex items-center justify-center text-pink-400 mb-4">
+              <div className="w-12 h-12 bg-neon-purple/10 rounded-lg flex items-center justify-center text-neon-purple mb-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
+                  width="28"
+                  height="28"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -310,16 +322,16 @@ Home.get("/", (c) => {
                   <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                 </svg>
               </div>
-              <h3 className="text-lg font-bold text-white mb-3 font-space">Open Source</h3>
-              <p className="text-neutral-300 text-sm mb-4">
+              <h3 className="text-xl font-bold text-white mb-3 font-space">Open Source</h3>
+              <p className="text-gray-300 text-sm mb-4">
                 Explore and contribute to our open-source project on GitHub.
               </p>
-              <div className="text-accent-400 font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
+              <div className="text-neon-cyan font-medium flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
                 View on GitHub
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
+                  width="18"
+                  height="18"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -333,12 +345,12 @@ Home.get("/", (c) => {
               </div>
             </a>
 
-            <div className="card-glow rounded-2xl p-6">
-              <div className="w-10 h-10 bg-gradient-to-br from-accent-500 to-pink-500 rounded-lg flex items-center justify-center text-white mb-4">
+            <div className="card-neon rounded-xl p-6 animate-scale-in" style={{ animationDelay: '0.2s' }}>
+              <div className="w-12 h-12 bg-gradient-to-br from-neon-cyan to-neon-purple rounded-lg flex items-center justify-center text-white mb-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
+                  width="28"
+                  height="28"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -349,19 +361,19 @@ Home.get("/", (c) => {
                   <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.8 8.8 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
                 </svg>
               </div>
-              <h3 className="text-lg font-bold text-white mb-3 font-space">Connect</h3>
-              <p className="text-neutral-300 text-sm mb-4">Get in touch via these platforms:</p>
-              <div className="flex gap-3">
+              <h3 className="text-xl font-bold text-white mb-3 font-space">Connect</h3>
+              <p className="text-gray-300 text-sm mb-4">Get in touch via these platforms:</p>
+              <div className="flex gap-4">
                 <a
                   href="https://github.com/kex001"
                   target="_blank"
-                  className="text-neutral-400 hover:text-accent-400 transition-colors"
+                  className="text-gray-400 hover:text-neon-cyan transition-colors"
                   rel="noreferrer"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
+                    width="24"
+                    height="24"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -369,19 +381,19 @@ Home.get("/", (c) => {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   >
-                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3_h3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                   </svg>
                 </a>
                 <a
                   href="https://twitter.com/kxunall"
                   target="_blank"
-                  className="text-neutral-400 hover:text-pink-400 transition-colors"
+                  className="text-gray-400 hover:text-neon-purple transition-colors"
                   rel="noreferrer"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
+                    width="24"
+                    height="24"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -395,12 +407,12 @@ Home.get("/", (c) => {
                 <a
                   href="https://t.me/ll_KEX_ll"
                   target="_blank"
-                  className="text-neutral-400 hover:text-accent-400 transition-colors"
+                  className="text-gray-400 hover:text-neon-cyan transition-colors"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
+                    width="24"
+                    height="24"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -417,78 +429,78 @@ Home.get("/", (c) => {
             </div>
           </div>
 
-          <div className="mt-20 terminal-glow rounded-2xl p-6 max-w-5xl mx-auto">
-            <h2 className="text-2xl font-bold text-center mb-6 font-space gradient-accent">API Documentation</h2>
-            <div className="bg-neutral-800 rounded-lg overflow-hidden border border-accent-500/20">
-              <div className="flex items-center px-4 py-2 bg-neutral-900 border-b border-accent-500/20">
-                <div className="flex space-x-1.5 mr-3">
-                  <div className="w-2.5 h-2.5 rounded-full bg-red-400"></div>
-                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-400"></div>
-                  <div className="w-2.5 h-2.5 rounded-full bg-green-400"></div>
+          <div className="mt-24 terminal-neon rounded-xl p-8 max-w-4xl mx-auto animate-scale-in" style={{ animationDelay: '0.3s' }}>
+            <h2 className="text-3xl font-bold text-center mb-6 font-space gradient-neon">API Documentation</h2>
+            <div className="bg-dark-800 rounded-lg overflow-hidden border border-neon-cyan/20">
+              <div className="flex items-center px-4 py-3 bg-dark-900 border-b border-neon-cyan/20">
+                <div className="flex space-x-2 mr-4">
+                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                  <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
                 </div>
-                <div className="text-xs text-neutral-400 font-mono">https://jiosaavan-mu.vercel.app/</div>
+                <div className="text-sm text-gray-400 font-space">https://jiosaavan-mu.vercel.app/</div>
                 <div className="ml-auto flex items-center">
-                  <span className="text-xs text-neutral-500 mr-1.5">●</span>
-                  <div className="w-1.5 h-1.5 rounded-full bg-accent-400 animate-blink"></div>
+                  <span className="text-sm text-gray-500 mr-2">●</span>
+                  <div className="w-2 h-2 rounded-full bg-neon-cyan animate-blink-cursor"></div>
                 </div>
               </div>
-              <div className="p-4 font-mono text-xs text-neutral-200">
-                <div className="flex items-start mb-3">
-                  <span className="text-accent-400 mr-1.5">➜</span>
-                  <span className="text-pink-400">URL</span>
-                  <span className="text-blue-300 ml-1.5">https://jiosaavan-mu.vercel.app/</span>
+              <div className="p-6 font-space text-sm text-gray-200">
+                <div className="flex items-start mb-4">
+                  <span className="text-neon-cyan mr-2">➜</span>
+                  <span className="text-neon-purple">URL</span>
+                  <span className="text-accent-300 ml-2">https://jiosaavan-mu.vercel.app/</span>
                 </div>
-                <div className="mb-4">
-                  <div className="text-accent-400 mb-1.5">// Search Operations</div>
-                  <div className="ml-3">
-                    <div className="mb-1 flex items-center"><span className="text-yellow-300">GET</span><span className="text-blue-300 ml-1.5">/api/search</span></div>
-                    <div className="mb-1 flex items-center"><span className="text-yellow-300">GET</span><span className="text-blue-300 ml-1.5">/api/search/songs</span></div>
-                    <div className="mb-1 flex items-center"><span className="text-yellow-300">GET</span><span className="text-blue-300 ml-1.5">/api/search/albums</span></div>
-                    <div className="mb-1 flex items-center"><span className="text-yellow-300">GET</span><span className="text-blue-300 ml-1.5">/api/search/artists</span></div>
-                    <div className="flex items-center"><span className="text-yellow-300">GET</span><span className="text-blue-300 ml-1.5">/api/search/playlists</span></div>
+                <div className="mb-6">
+                  <div className="text-neon-cyan mb-2">// Search Operations</div>
+                  <div className="ml-4">
+                    <div className="mb-2 flex items-center"><span className="text-yellow-400">GET</span><span className="text-accent-300 ml-2">/api/search</span></div>
+                    <div className="mb-2 flex items-center"><span className="text-yellow-400">GET</span><span className="text-accent-300 ml-2">/api/search/songs</span></div>
+                    <div className="mb-2 flex items-center"><span className="text-yellow-400">GET</span><span className="text-accent-300 ml-2">/api/search/albums</span></div>
+                    <div className="mb-2 flex items-center"><span className="text-yellow-400">GET</span><span className="text-accent-300 ml-2">/api/search/artists</span></div>
+                    <div className="flex items-center"><span className="text-yellow-400">GET</span><span className="text-accent-300 ml-2">/api/search/playlists</span></div>
                   </div>
                 </div>
-                <div className="mb-4">
-                  <div className="text-accent-400 mb-1.5">// Song Operations</div>
-                  <div className="ml-3">
-                    <div className="mb-1 flex items-center"><span className="text-yellow-300">GET</span><span className="text-blue-300 ml-1.5">/api/songs</span></div>
-                    <div className="mb-1 flex items-center"><span className="text-yellow-300">GET</span><span className="text-blue-300 ml-1.5">/api/songs/:id</span></div>
+                <div className="mb-6">
+                  <div className="text-neon-cyan mb-2">// Song Operations</div>
+                  <div className="ml-4">
+                    <div className="mb-2 flex items-center"><span className="text-yellow-400">GET</span><span className="text-accent-300 ml-2">/api/songs</span></div>
+                    <div className="mb-2 flex items-center"><span className="text-yellow-400">GET</span><span className="text-accent-300 ml-2">/api/songs/:id</span></div>
                   </div>
                 </div>
-                <div className="mb-4">
-                  <div className="text-accent-400 mb-1.5">// Artist Operations</div>
-                  <div className="ml-3">
-                    <div className="mb-1 flex items-center"><span className="text-yellow-300">GET</span><span className="text-blue-300 ml-1.5">/api/artists</span></div>
-                    <div className="mb-1 flex items-center"><span className="text-yellow-300">GET</span><span className="text-blue-300 ml-1.5">/api/artists/:id</span></div>
-                    <div className="mb-1 flex items-center"><span className="text-yellow-300">GET</span><span className="text-blue-300 ml-1.5">/api/artists/:id/songs</span></div>
-                    <div className="flex items-center"><span className="text-yellow-300">GET</span><span className="text-blue-300 ml-1.5">/api/artists/:id/albums</span></div>
+                <div className="mb-6">
+                  <div className="text-neon-cyan mb-2">// Artist Operations</div>
+                  <div className="ml-4">
+                    <div className="mb-2 flex items-center"><span className="text-yellow-400">GET</span><span className="text-accent-300 ml-2">/api/artists</span></div>
+                    <div className="mb-2 flex items-center"><span className="text-yellow-400">GET</span><span className="text-accent-300 ml-2">/api/artists/:id</span></div>
+                    <div className="mb-2 flex items-center"><span className="text-yellow-400">GET</span><span className="text-accent-300 ml-2">/api/artists/:id/songs</span></div>
+                    <div className="flex items-center"><span className="text-yellow-400">GET</span><span className="text-accent-300 ml-2">/api/artists/:id/albums</span></div>
                   </div>
                 </div>
                 <div>
-                  <div className="text-accent-400 mb-1.5">// Collection Operations</div>
-                  <div className="ml-3">
-                    <div className="mb-1 flex items-center"><span className="text-yellow-300">GET</span><span className="text-blue-300 ml-1.5">/api/albums</span></div>
-                    <div className="flex items-center"><span className="text-yellow-300">GET</span><span className="text-blue-300 ml-1.5">/api/playlists</span></div>
+                  <div className="text-neon-cyan mb-2">// Collection Operations</div>
+                  <div className="ml-4">
+                    <div className="mb-2 flex items-center"><span className="text-yellow-400">GET</span><span className="text-accent-300 ml-2">/api/albums</span></div>
+                    <div className="flex items-center"><span className="text-yellow-400">GET</span><span className="text-accent-300 ml-2">/api/playlists</span></div>
                   </div>
                 </div>
-                <div className="flex items-center mt-3">
-                  <span className="text-accent-400 mr-1.5">➜</span>
-                  <span className="text-neutral-300">_</span>
-                  <span className="ml-0.5 h-4 w-1.5 bg-accent-400 animate-blink"></span>
+                <div className="flex items-center mt-4">
+                  <span className="text-neon-cyan mr-2">➜</span>
+                  <span className="text-gray-300">_</span>
+                  <span className="ml-0.5 h-4 w-1 bg-neon-cyan animate-blink-cursor"></span>
                 </div>
               </div>
             </div>
           </div>
-        </main>
 
-        <footer className="relative mt-24 pb-6 text-center text-neutral-500 text-sm">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="border-t border-neutral-700/50 pt-6">
-              <p>© {new Date().getFullYear()} JioSaavn. Not affiliated with JioSaavn.</p>
-              <p className="mt-1 text-xs">Built by Kunal ✨</p>
+          <footer className="relative mt-20 pb-8 text-center text-gray-500 text-sm">
+            <div className="max-w-6xl mx-auto px-6">
+              <div className="border-t border-dark-700/50 pt-6">
+                <p>© {new Date().getFullYear()} JioSaavn. Not affiliated with JioSaavn.</p>
+                <p className="mt-2 text-xs">Built by Kunal with <span className="text-neon-cyan">✨</span></p>
+              </div>
             </div>
-          </div>
-        </footer>
+          </footer>
+        </main>
       </body>
     </html>
   )
